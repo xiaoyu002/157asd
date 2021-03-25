@@ -363,11 +363,11 @@ var producGame = {
       let games = allgames
         console.info('苏念修复补丁正在运行✅')
         console.info('剩余未完成game', games.length)
-        let queue = new PQueue({ concurrency: 15 });
+        let queue = new PQueue({ concurrency: 1 });
 
         let others = ['1110422106']
 
-        console.info('调度任务中', '并发数', 15)
+        console.info('调度任务中', '并发数', 1)
         for (let game of games) {
             queue.add(async () => {
                 console.info(game.name)
@@ -409,9 +409,9 @@ var producGame = {
         let { games, jar } = await producGame.getTaskList(axios, options)
         games = games.filter(d => d.task === '5' && d.reachState === '0' && d.task_type === 'duration')
         console.info('剩余未完成game', games.length)
-        let queue = new PQueue({ concurrency: 15 });
+        let queue = new PQueue({ concurrency: 1 });
 
-        console.info('调度任务中', '并发数', 15)
+        console.info('调度任务中', '并发数', 1)
         for (let game of games) {
             queue.add(async () => {
                 console.info(game.name)
